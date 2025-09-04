@@ -12,39 +12,52 @@
     }
 
     header {
-      background-color: #2C3E50;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 30px;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      z-index: 10;
+        background-color: #e0f7fa;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .nav-wrapper {
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 30px;
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .logo img {
-      height: 40px;
+        height: 40px;
+    }
+
+    nav {
+        margin: 0 auto;
+        display: flex;
+        gap: 30px;
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-      transition: color 0.3s;
+        color: black;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #1ABC9C;
+        color: #1ABC9C;
     }
 
     main {
@@ -102,26 +115,33 @@
       font-size: 18px;
     }
 
+    .oculto {
+      display: none;
+    }
+
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">
-      <img src="logo_EDUCARIA_retina_movil.png" alt="educaria">
-      <span><strong>Educaria</strong></span>
+    <div class="nav-wrapper">
+      <div class="logo">
+        <img src="logo_EDUCARIA_retina_movil.png" alt="educaria">
+      </div>
+      <nav>
+        <a href="#">Contexto 1</a>
+        <a href="#">Contexto 2</a>
+        <a href="#">Alexia Gestión 1</a>
+        <a href="#">Alexia Gestión 2</a>
+        <a href="#">Alexia Gestión 3</a>
+        <a href="#">Alexia Gestión 4</a>
+      </nav>
     </div>
-    <nav>
-      <a href="#">Inicio</a>
-      <a href="#">Quiz 1</a>
-      <a href="#">Quiz 2</a>
-      <a href="#">Contacto</a>
-    </nav>
   </header>
 
   <main>
-    <h2>¿Qué procesos de gestión hay en un centro educativo?</h2>
 
+    <h2>¿Qué procesos de gestión hay en un centro educativo?</h2>
     <div class="respuesta">
       <input type="checkbox" id="procesosClave">
       <label for="procesosClave">Procesos clave</label>
@@ -142,28 +162,147 @@
       <label for="procesosTransversales">Procesos transversales</label>
     </div>
 
+    <!-- Contenedor oculto que aparecerá solo si la primera pregunta es correcta -->
+    <div id="bloquePreguntasSecundarias" class="oculto">
+
+      <h2>Identifica los procesos clave</h2>
+      <div class="respuesta">
+        <input type="checkbox" id="respuestaSIS">
+        <label for="respuestaSIS">SIS (System Information Students)</label>
+      </div>
+
+      <div class="respuesta">
+        <input type="checkbox" id="respuestaAprendizajeDig">
+        <label for="respuestaAprendizajeDig">Aprendizaje digital y contenidos</label>
+      </div>
+
+      <div class="respuesta">
+        <input type="checkbox" id="respuestaIntEscFam">
+        <label for="respuestaIntEscFam">Interacción escuela/familia</label>
+      </div>
+
+      <div class="respuesta">
+        <input type="checkbox" id="respuestaIntFamilias">
+        <label for="respuestaIntFamilias">Interacción entre familias</label>
+      </div>
+
+      <div class="respuesta">
+        <input type="checkbox" id="respuestaServCompl">
+        <label for="respuestaServCompl">Servicios complementarios (matriculación, transporte, comedor, etc.)</label>
+      </div>
+
+      <h2>Identifica los procesos estructurales</h2>
+      <div class="respuesta">
+        <input type="checkbox" id="respuestaRecHum">
+        <label for="respuestaRecHum">Gestión de recuros y personas</label>
+      </div>
+
+      <div class="respuesta">
+        <input type="checkbox" id="respuestaEspVerd">
+        <label for="respuestaEspVerd">Gestión de espacios verdes</label>
+      </div>
+
+      <div class="respuesta">
+        <input type="checkbox" id="respuestaContFin">
+        <label for="respuestaContFin">Gestión contable/financiera</label>
+      </div>
+
+      <h2>Identifica los procesos transversales</h2>
+      <div class="respuesta">
+        <input type="checkbox" id="respuestaSEO">
+        <label for="respuestaSEO">SEO y redes sociales</label>
+      </div>
+
+      <div class="respuesta">
+        <input type="checkbox" id="respuestaCaptMark">
+        <label for="respuestaCaptMark">Captación y Marketing</label>
+      </div>
+
+      <div class="respuesta">
+        <input type="checkbox" id="respuestaGestCalidad">
+        <label for="respuestaGestCalidad">Gestión de calidad</label>
+      </div>
+
+    </div>
+
     <button onclick="verificarRespuestas()">Verificar</button>
 
-    <div class="resultado" id="resultado"></div>
+    <div class="resultado" id="resultadoPregunta1"></div>
+    <div class="resultado" id="resultadoPregunta2"></div>
+    <div class="resultado" id="resultadoPregunta3"></div>
+    <div class="resultado" id="resultadoPregunta4"></div>
+
   </main>
 
   <script>
     function verificarRespuestas() {
-      const clave = document.getElementById("procesosClave").checked;
-      const informaticos = document.getElementById("procesosInformaticos").checked;
-      const estructurales = document.getElementById("procesosEstructurales").checked;
-      const transversales = document.getElementById("procesosTransversales").checked;
+        const bloqueSecundario = document.getElementById("bloquePreguntasSecundarias");
 
-      const correcto = clave && estructurales && transversales && !informaticos;
+        // Pregunta 1
+        const clave = document.getElementById("procesosClave").checked;
+        const informaticos = document.getElementById("procesosInformaticos").checked;
+        const estructurales = document.getElementById("procesosEstructurales").checked;
+        const transversales = document.getElementById("procesosTransversales").checked;
+        const correcta1 = clave && estructurales && transversales && !informaticos;
 
-      const resultado = document.getElementById("resultado");
-      if (correcto) {
-        resultado.textContent = "✅ ¡Correcto! Los procesos clave, estructurales y transversales son los adecuados.";
-        resultado.style.color = "green";
-      } else {
-        resultado.textContent = "❌ Incorrecto. Revisa las opciones y vuelve a intentarlo.";
-        resultado.style.color = "red";
-      }
+        const resultado1 = document.getElementById("resultadoPregunta1");
+        if (correcta1) {
+            resultado1.textContent = "✅ Pregunta 1: ¡Correcto! Los procesos clave, estructurales y transversales es la respuesta correcta.";
+            resultado1.style.color = "green";
+            bloqueSecundario.classList.remove("oculto");
+        } else {
+            resultado1.textContent = "❌ Pregunta 1: Hay un error en la selección. Revisa las opciones.";
+            resultado1.style.color = "red";
+            bloqueSecundario.classList.add("oculto");
+            return; // No seguir evaluando si la 1 no es correcta
+        }
+
+        // Pregunta 2
+        const respuestaSIS = document.getElementById("respuestaSIS").checked;
+        const respuestaAprendizajeDig = document.getElementById("respuestaAprendizajeDig").checked;
+        const respuestaIntEscFam = document.getElementById("respuestaIntEscFam").checked;
+        const respuestaIntFamilias = document.getElementById("respuestaIntFamilias").checked;
+        const respuestaServCompl = document.getElementById("respuestaServCompl").checked;
+        const correcta2 = respuestaSIS && respuestaAprendizajeDig && respuestaIntEscFam && respuestaServCompl && !respuestaIntFamilias;
+
+        const resultado2 = document.getElementById("resultadoPregunta2");
+        if (correcta2) {
+            resultado2.textContent = "✅ Pregunta 2: ¡Correcto! Otros procesos clave son currículo y evaluación, horarios y espacios, biblioteca, expedientes, etc.";
+            resultado2.style.color = "green";
+        } else {
+            resultado2.textContent = "❌ Pregunta 2: Alguna opción es incorrecta. Intenta nuevamente.";
+            resultado2.style.color = "red";
+        }
+
+        // Pregunta 3
+        const respuestaRecHum = document.getElementById("respuestaRecHum").checked;
+        const respuestaEspVerd = document.getElementById("respuestaEspVerd").checked;
+        const respuestaContFin = document.getElementById("respuestaContFin").checked;
+        const correcta3 = respuestaRecHum && respuestaContFin && !respuestaEspVerd;
+
+        const resultado3 = document.getElementById("resultadoPregunta3");
+        if (correcta3) {
+            resultado3.textContent = "✅ Pregunta 3: ¡Correcto! Otros procesos estructurales son E-comerce, Gestión tecnológica y seguridad, etc.";
+            resultado3.style.color = "green";
+        } else {
+            resultado3.textContent = "❌ Pregunta 3: Alguna opción es incorrecta. Intenta nuevamente.";
+            resultado3.style.color = "red";
+        }
+
+        // Pregunta 4
+        const respuestaSEO = document.getElementById("respuestaSEO").checked;
+        const respuestaCaptMark = document.getElementById("respuestaCaptMark").checked;
+        const respuestaGestCalidad = document.getElementById("respuestaGestCalidad").checked;
+        const correcta4 = respuestaGestCalidad && respuestaCaptMark && !respuestaSEO;
+
+        const resultado4 = document.getElementById("resultadoPregunta4");
+        if (correcta4) {
+            resultado4.textContent = "✅ Pregunta 4: ¡Correcto! Otro proceso transversal muy importante es la explotación de datos";
+            resultado4.style.color = "green";
+        } else {
+            resultado4.textContent = "❌ Pregunta 4: Alguna opción es incorrecta. Intenta nuevamente.";
+            resultado4.style.color = "red";
+        }
     }
   </script>
 
