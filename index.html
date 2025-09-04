@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz de selección múltiple</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    .respuesta {
+      margin: 10px 0;
+    }
+    .resultado {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>¿Qué procesos de gestión hay en un centro educativo?</h2>
+
+  <div class="respuesta">
+    <input type="checkbox" id="procesosClave">
+    <label for="html">Procesos clave</label>
+  </div>
+
+  <div class="respuesta">
+    <input type="checkbox" id="procesosInformaticos">
+    <label for="python">Procesos informáticos</label>
+  </div>
+
+  <div class="respuesta">
+    <input type="checkbox" id="procesosEstructurales">
+    <label for="css">Procesos estructurales</label>
+  </div>
+
+  <div class="respuesta">
+    <input type="checkbox" id="procesosTransversales">
+    <label for="javascript">Procesos transversales</label>
+  </div>
+
+  <button onclick="verificarRespuestas()">Verificar</button>
+
+  <div class="resultado" id="resultado"></div>
+
+  <script>
+    function verificarRespuestas() {
+      const clave = document.getElementById("procesosClave").checked;
+      const informaticos = document.getElementById("procesosInformaticos").checked;
+      const estructurales = document.getElementById("procesosEstructurales").checked;
+      const transversales = document.getElementById("procesosTransversales").checked;
+
+      const correcto = clave && estructurales && transversales && !informaticos;
+
+      const resultado = document.getElementById("resultado");
+      if (correcto) {
+        resultado.textContent = "✅ ¡Correcto! Los procesos clave, estructurales y transversales es la respuesta correcta";
+        resultado.style.color = "green";
+      } else {
+        resultado.textContent = "❌ Incorrecto. Vuelve a intentarlo.";
+        resultado.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>
