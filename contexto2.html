@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contexto 2 - Quiz de Gestión Educativa</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #e0f7fa;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+    }
+
+    .nav-wrapper {
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    nav {
+      margin: 0 auto;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: black;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #1ABC9C;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 100px auto 40px;
+      padding: 30px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    h2 {
+      color: #2C3E50;
+    }
+
+    .respuesta {
+      margin: 15px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.2s;
+    }
+
+    .respuesta:hover {
+      background-color: #eef3f7;
+    }
+
+    .respuesta input {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    button {
+      background-color: #1ABC9C;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #16a085;
+      transform: scale(1.05);
+    }
+
+    .resultado {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-wrapper">
+      <div class="logo">
+        <img src="logo_EDUCARIA_retina_movil.png" alt="educaria">
+      </div>
+      <nav>
+        <a href="index.html">Contexto 1</a>
+        <a href="contexto2.html">Contexto 2</a>
+        <a href="#">Alexia Gestión 1</a>
+        <a href="#">Alexia Gestión 2</a>
+        <a href="#">Alexia Gestión 3</a>
+        <a href="#">Alexia Gestión 4</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2>Identifica los marcos de referencia</h2>
+
+    <div class="respuesta">
+      <input type="checkbox" id="opcion1">
+      <label for="opcion1">Marco normativo</label>
+    </div>
+
+    <div class="respuesta">
+      <input type="checkbox" id="opcion2">
+      <label for="opcion2">Marco europeo</label>
+    </div>
+
+    <div class="respuesta">
+      <input type="checkbox" id="opcion3">
+      <label for="opcion3">Marco técnico pedagógico</label>
+    </div>
+
+    <div class="respuesta">
+      <input type="checkbox" id="opcion4">
+      <label for="opcion4">Marco constitucional</label>
+    </div>
+
+    <div class="respuesta">
+      <input type="checkbox" id="opcion5">
+      <label for="opcion5">Marco institucional</label>
+    </div>
+
+    <button onclick="verificar()">Verificar</button>
+
+    <div class="resultado" id="resultado"></div>
+  </main>
+
+  <script>
+    function verificar() {
+      const opcion1 = document.getElementById("opcion1").checked;
+      const opcion2 = document.getElementById("opcion2").checked;
+      const opcion3 = document.getElementById("opcion3").checked;
+      const opcion4 = document.getElementById("opcion4").checked;
+      const opcion5 = document.getElementById("opcion5").checked;
+
+      const correcta1 = opcion1 && opcion3 && opcion5 && !opcion2 && !opcion4;
+
+      const resultado = document.getElementById("resultado");
+
+      if (correcta1) {
+        resultado.textContent = "✅ ¡Correcto! Has identificado los marcos de referencia adecuados.";
+        resultado.style.color = "green";
+      } else {
+        resultado.textContent = "❌ Incorrecto. Revisa las opciones y vuelve a intentarlo.";
+        resultado.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>
